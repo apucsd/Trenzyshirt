@@ -1,3 +1,4 @@
+import Category from "@/components/home/Category";
 import FlashSale from "@/components/home/FlashSale";
 import { HeroSection } from "@/components/home/HeroSection";
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <div>
       <HeroSection />
       <FlashSale />
+      <Category />
     </div>
   );
 }
