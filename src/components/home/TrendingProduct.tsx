@@ -1,15 +1,15 @@
-import { ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
 import Link from "next/link";
+import { Button } from "../ui/button";
 import ProductCard from "../ui/ProductCard";
+import { ChevronRight } from "lucide-react";
 
-const FlashSale = () => {
+const TrendingProduct = () => {
   return (
     <div className="my-10 p-5">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="md:text-4xl text-xl text-start font-medium">
-            Flash Sale
+            Trending Products
           </h1>
         </div>
         <div>
@@ -22,10 +22,10 @@ const FlashSale = () => {
       </div>
 
       <div
-        className="my-5 grid
-       md:grid-cols-4 gap-3 justify-center place-items-center"
+        className="my-10 grid
+     md:grid-cols-3 gap-5  justify-center place-items-center"
       >
-        {[1, 2, 3, 4].map((item, i) => (
+        {[1, 2, 3, 4, 5, 6].map((item, i) => (
           <ProductCard key={i} />
         ))}
       </div>
@@ -33,4 +33,4 @@ const FlashSale = () => {
   );
 };
 
-export default FlashSale;
+export default TrendingProduct;

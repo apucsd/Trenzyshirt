@@ -65,7 +65,9 @@ const Category = () => {
                 />
               </div>
               <div className="absolute bottom-0 mb-10 flex w-full justify-center space-x-4">
-                <h1 className="text-white text-3xl">{category.title}</h1>
+                <h1 className="text-white drop-shadow-lg text-3xl">
+                  {category.title}
+                </h1>
               </div>
             </div>
           </Link>
