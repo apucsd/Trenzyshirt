@@ -58,8 +58,10 @@ export const HeroSection = () => {
             <div
               onClick={() => setCurrentSlider(inx)}
               key={inx}
-              className={`size-3 rounded-full  bg-white ${
-                currentSlider === inx ? "px-3 duration-1000" : ""
+              className={`h-1 w-6   border border-white ${
+                currentSlider === inx
+                  ? "px-5 bg-white duration-1000"
+                  : "bg-transparent"
               }  box-content cursor-pointer`}
             />
           ))}
