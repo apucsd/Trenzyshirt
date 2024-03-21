@@ -1,5 +1,5 @@
 const MensShirtsPage = () => {
-  return <div>this is MensShirtsPage</div>;
+  return <div>All Shirts here</div>;
 };
 
 export default MensShirtsPage;

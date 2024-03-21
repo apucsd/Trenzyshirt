@@ -22,19 +22,19 @@ const Navbar = () => {
     },
     {
       title: "Dashboard",
-      link: "/dashboard",
+      link: "/dashboard/all-products",
       id: 4,
     },
-    {
-      title: "About Us",
-      link: "/about-us",
-      id: 5,
-    },
-    {
-      title: "Contact Us",
-      link: "/contact-us",
-      id: 6,
-    },
+    // {
+    //   title: "About Us",
+    //   link: "/about-us",
+    //   id: 5,
+    // },
+    // {
+    //   title: "Contact Us",
+    //   link: "/contact-us",
+    //   id: 6,
+    // },
   ];
 
   return (
