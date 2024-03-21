@@ -1,33 +1,66 @@
-import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { TProduct } from "@/types";
+import Image from "next/image";
+const AllProducts = async () => {
+  const res = await fetch("http://localhost:5000/products", {
+    next: {
+      revalidate: 30,
+    },
+  });
+  const { result: allProducts } = await res.json();
 
-const AllProducts = () => {
+  // console.log(allProducts);
   return (
     <div>
       <div className="overflow-x-auto ">
-        <table className="min-w-[90%] shadow-md  border mx-auto border-gray-100  my-6">
-          <thead>
-            <tr className="bg-[#333333] text-white">
-              <th className="py-3 px-6 text-left border-b">Name</th>
-              <th className="py-3 px-6 text-left border-b">Age</th>
-              <th className="py-3 px-6 text-left border-b">Gender</th>
-              <th className="py-3 px-6  border-b text-end">Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="hover:bg-gray-50 transition duration-300">
-              <td className="py-4 px-6 border-b">Shiyam </td>
-              <td className="py-4 px-6 border-b">19</td>
-              <td className="py-4 px-6 border-b">Male</td>
-              <td className="py-4 px-6 border-b text-end">Mirpur 15, Dhaka</td>
-            </tr>
-            <tr className="hover:bg-gray-50 transition duration-300">
-              <td className="py-4 px-6 border-b">Arif</td>
-              <td className="py-4 px-6 border-b">17</td>
-              <td className="py-4 px-6 border-b">Male</td>
-              <td className="py-4 px-6 border-b text-end">Bagerhat, Khulna</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table>
+          <TableCaption>A list of products of this website.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">SL</TableHead>
+              <TableHead>Figure</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead className="text-end">Price</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {allProducts.map((product: TProduct, i: number) => (
+              <TableRow key={product._id}>
+                <TableCell className="font-medium">{i + 1}</TableCell>
+                <TableCell>
+                  <Image
+                    src={product.image as string}
+                    alt="product"
+                    height={30}
+                    width={30}
+                    className="rounded-full"
+                  />
+                </TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>{product.category}</TableCell>
+                <TableCell className="text-right">{product.price}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3}>Total Products</TableCell>
+              <TableCell className="text-right">
+                {allProducts?.length}
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
       </div>
     </div>
   );
