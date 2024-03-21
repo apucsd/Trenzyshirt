@@ -96,25 +96,25 @@ const Category = () => {
   const shirtCategories = [
     {
       id: 1,
-      img: "https://example.com/images/casual-shirts.jpg",
+      img: "https://d23b5yck4idk5n.cloudfront.net/wp-content/uploads/2024/03/1df2e4a9-6c27-4f6c-b2e0-aed3a73309eb-300x400.jpg",
       title: "Casual Shirts",
       link: "/mens-shirts?category=casual-shirts",
     },
     {
       id: 2,
-      img: "https://example.com/images/formal-shirts.jpg",
+      img: "https://d23b5yck4idk5n.cloudfront.net/wp-content/uploads/2024/03/f3a9556a-ad77-4379-bd77-f9613d6140c1-300x400.jpg",
       title: "Formal Shirts",
       link: "/mens-shirts?category=formal-shirts",
     },
     {
       id: 3,
-      img: "https://example.com/images/t-shirts.jpg",
+      img: "https://d23b5yck4idk5n.cloudfront.net/wp-content/uploads/2024/03/443b797d-989e-4db3-b857-d7389977c6b6-300x400.jpg",
       title: "T-Shirts",
       link: "/mens-shirts?category=t-shirts",
     },
     {
       id: 4,
-      img: "https://example.com/images/polo-shirts.jpg",
+      img: "https://d23b5yck4idk5n.cloudfront.net/wp-content/uploads/2024/03/13766b2a-8faa-47c8-a7f4-f82d6a845c06-300x400.jpg",
       title: "Polo Shirts",
       link: "/mens-shirts?category=polo-shirts",
     },
@@ -146,12 +146,12 @@ const Category = () => {
             className={`${i % 2 === 0 ? "row-span-2" : ""} group`}
           >
             <div className="relative border-2 p-3  overflow-hidden">
-              <div className="w-[300px]">
+              <div className="w-[100%]">
                 <Image
                   height={400}
-                  width={400}
+                  width={250}
                   className=" object-cover hover:scale-110 transition duration-300"
-                  src="https://dorjibari.com.bd/public/uploads/products/thumbnail/WpQwjyp2EKA2oMqJjFsZ6Ovj7cFulGC5gplBSZUn.jpeg"
+                  src={category.img}
                   alt="category image"
                 />
               </div>
