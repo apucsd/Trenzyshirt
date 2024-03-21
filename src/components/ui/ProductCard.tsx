@@ -5,7 +5,7 @@ import Link from "next/link";
 import { TProduct } from "@/types";
 
 const ProductCard = ({ name, price, image, _id }: Partial<TProduct>) => {
-  console.log(image);
+  // console.log(image);
   return (
     <div className=" bg-white w-full md:max-w-xs shadow-md rounded-xl duration-500">
       <div className="group  flex w-full flex-col overflow-hidden bg-white">
@@ -38,7 +38,7 @@ const ProductCard = ({ name, price, image, _id }: Partial<TProduct>) => {
           <div className="mb-5 flex justify-center">
             <p>
               <span className="text-sm font-bold text-gray-900">৳{price}</span>
-              <span className="text-sm text-gray-400 line-through">৳499</span>
+              <span className="text-sm text-gray-400 line-through">৳199</span>
             </p>
           </div>
         </div>

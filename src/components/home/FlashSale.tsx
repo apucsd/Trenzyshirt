@@ -6,7 +6,12 @@ import { TProduct } from "@/types";
 
 const FlashSale = async () => {
   const res = await fetch(
-    "http://localhost:5000/products/filter?flashSale=true"
+    "http://localhost:5000/products/filter?flashSale=true",
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
   );
   const { result: flashSales } = await res.json();
   // console.log(result);
