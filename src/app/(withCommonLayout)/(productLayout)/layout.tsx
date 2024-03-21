@@ -4,23 +4,23 @@ import { ReactNode } from "react";
 
 const ProductsLayout = ({ children }: { children: ReactNode }) => {
   const ratingLinks = [
-    { rating: "4-5", label: "4-5", href: "/mens-shirts/filter/ratings=4-5" },
-    { rating: "3-4", label: "3-4", href: "/mens-shirts/filter/?ratings=3-4" },
-    { rating: "2-3", label: "2-3", href: "/mens-shirts/filter/?ratings=2-3" },
-    { rating: "1-2", label: "1-2", href: "/mens-shirts/filter/?ratings=1-2" },
+    { rating: "4-5", label: "4-5", href: "/mens-shirts/?ratings=4-5" },
+    { rating: "3-4", label: "3-4", href: "/mens-shirts?ratings=3-4" },
+    { rating: "2-3", label: "2-3", href: "/mens-shirts?ratings=2-3" },
+    { rating: "1-2", label: "1-2", href: "/mens-shirts?ratings=1-2" },
   ];
   const priceLinks = [
-    { label: "Under ৳25", href: "/mens-shirts/filter/?price=under-25" },
-    { label: "৳25 to ৳50", href: "/mens-shirts/filter/?price=25-50" },
-    { label: "৳50 to ৳100", href: "/mens-shirts/filter/?price=50-100" },
-    { label: "Over ৳100", href: "/mens-shirts/filter/?price=over-100" },
+    { label: "Under ৳25", href: "/mens-shirts?price=under-25" },
+    { label: "৳25 to ৳50", href: "/mens-shirts?price=25-50" },
+    { label: "৳50 to ৳100", href: "/mens-shirts?price=50-100" },
+    { label: "Over ৳100", href: "/mens-shirts?price=over-100" },
   ];
   const categoryLinks = [
-    { label: "Casual Shirts", href: "/mens-shirts/filter/?category=casual" },
-    { label: "Formal Shirts", href: "/mens-shirts/filter/?category=formal" },
-    { label: "Party Wear", href: "/mens-shirts/filter/?category=party-wear" },
-    { label: "T-Shirts", href: "/mens-shirts/filter/?category=t-shirts" },
-    { label: "Polo Shirts", href: "/mens-shirts/filter/?category=polo-shirts" },
+    { label: "Casual Shirts", href: "/mens-shirts?category=casual" },
+    { label: "Formal Shirts", href: "/mens-shirts?category=formal" },
+    { label: "Party Wear", href: "/mens-shirts?category=party-wear" },
+    { label: "T-Shirts", href: "/mens-shirts?category=t-shirts" },
+    { label: "Polo Shirts", href: "/mens-shirts?category=polo-shirts" },
   ];
 
   return (

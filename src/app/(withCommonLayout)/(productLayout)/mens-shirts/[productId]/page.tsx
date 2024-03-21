@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
-const ProductDetails = () => {
+const ProductDetails = ({ params }: { params: any }) => {
   return (
     <div className="container">
       <div>

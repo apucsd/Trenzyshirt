@@ -2,8 +2,14 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import ProductCard from "../ui/ProductCard";
+import { TProduct } from "@/types";
 
-const FlashSale = () => {
+const FlashSale = async () => {
+  const res = await fetch(
+    "http://localhost:5000/products/filter?flashSale=true"
+  );
+  const { result: flashSales } = await res.json();
+  // console.log(result);
   return (
     <div className="my-10 p-5">
       <div className="flex justify-between items-center">
@@ -25,8 +31,8 @@ const FlashSale = () => {
         className="my-5 grid
        md:grid-cols-4 gap-3 justify-center place-items-center"
       >
-        {[1, 2, 3, 4].map((item, i) => (
-          <ProductCard key={i} />
+        {flashSales?.slice(0, 4).map((item: TProduct) => (
+          <ProductCard key={item._id} {...item} />
         ))}
       </div>
     </div>

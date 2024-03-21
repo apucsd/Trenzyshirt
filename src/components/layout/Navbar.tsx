@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <header className="mb-2 md:text-xl ">
-      <div className="relative font-medium flex max-w-screen-xl flex-col overflow-hidden px-4 py-4 sm:mx-auto sm:flex-row">
+      <div className="relative  flex max-w-screen-xl flex-col overflow-hidden px-4 py-4 sm:mx-auto sm:flex-row">
         <h1>
           {" "}
           Trenzy<span className="text-[#6e5fbe] text-[2rem]">Shirt</span>
