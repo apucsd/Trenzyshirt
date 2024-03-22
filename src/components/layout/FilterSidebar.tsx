@@ -20,7 +20,7 @@ const FilterSidebar = async () => {
   const categories = allDynamicCategory.map((item: TProduct) => item.category);
   const uniqueCategories: string[] = Array.from(new Set(categories));
   return (
-    <div className="col-span-3  min-h-screen">
+    <div className="col-span-3  p-5 min-h-screen">
       {/* filter by price */}
       <details open className="  w-full overflow-hidden  p-2">
         <summary className="flex flex-col cursor-pointer select-none items-center justify-between px-5 py-3 lg:hidden"></summary>

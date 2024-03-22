@@ -1,19 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
+import Ratings from "@/components/ui/Ratings";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
-const ProductDetails = ({ params }: { params: any }) => {
+type TProductDetailsParams = {
+  productId: string;
+};
+const ProductDetails = async ({
+  params,
+}: {
+  params: TProductDetailsParams;
+}) => {
+  // console.log(params);
+  const id = params.productId;
+  const res = await fetch(`http://localhost:5000/products/${id}`);
+  const { result: product } = await res.json();
+  // console.log(product);
   return (
-    <div className="container">
+    <div className="container bg-white">
       <div>
         <div className="p-6 lg:max-w-7xl max-w-4xl mx-auto">
           <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-6">
             <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
-              <div className="px-4 relative h-96 py-10 rounded-xl shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)]">
+              <div className="px-4 relative h-96 py-10 rounded-xl ">
                 <Image
                   fill
-                  src="https://readymadeui.com/images/laptop5.webp"
+                  src={product.image}
                   alt="Product"
                   className="w-full mx-auto rounded object-contain"
                 />
@@ -51,55 +64,18 @@ const ProductDetails = ({ params }: { params: any }) => {
             </div>
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-extrabold text-primary">
-                Acer Aspire Pro 12 | Laptop
+                {product.name}
               </h2>
               <div className="flex flex-wrap gap-4 mt-6">
-                <p className="text-primary text-4xl font-bold">$1200</p>
+                <p className="text-primary text-4xl font-bold">
+                  ৳ {product.price}
+                </p>
                 <p className="text-gray-400 text-xl">
-                  $1500 <span className="text-sm ml-1">Tax included</span>
+                  ৳20 <span className="text-sm ml-1">Tax included</span>
                 </p>
               </div>
               <div className="flex space-x-2 mt-4">
-                <svg
-                  className="w-5 fill-[#333]"
-                  viewBox="0 0 14 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                </svg>
-                <svg
-                  className="w-5 fill-[#333]"
-                  viewBox="0 0 14 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                </svg>
-                <svg
-                  className="w-5 fill-[#333]"
-                  viewBox="0 0 14 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                </svg>
-                <svg
-                  className="w-5 fill-[#333]"
-                  viewBox="0 0 14 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                </svg>
-                <svg
-                  className="w-5 fill-[#CED5D8]"
-                  viewBox="0 0 14 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                </svg>
+                <Ratings rating={product.rating} />
                 <h4 className="text-primary text-base">500 Reviews</h4>
               </div>
 
@@ -113,17 +89,26 @@ const ProductDetails = ({ params }: { params: any }) => {
             <h3 className="text-lg font-bold text-primary">
               Product information
             </h3>
-            <ul className="mt-6 space-y-6 text-primary">
+            <ul className="mt-6 space-y-6 uppercase text-primary">
               <li className="text-sm">
-                TYPE <span className="ml-4 float-right">LAPTOP</span>
+                Product Information
+                <span className="ml-4 float-right ">{product.name}</span>
               </li>
               <li className="text-sm">
-                RAM <span className="ml-4 float-right">16 BG</span>
+                Category
+                <span className="ml-4 float-right ">{product.category}</span>
               </li>
               <li className="text-sm">
-                SSD <span className="ml-4 float-right">1000 BG</span>
+                Brand <span className="ml-4 float-right">{product.brand}</span>
               </li>
             </ul>
+            <div>
+              <h3 className="text-lg font-bold my-4 text-primary">
+                Product Short Details
+              </h3>
+
+              <h3 className="uppercase text sm">{product.description}</h3>
+            </div>
           </div>
           <div className="mt-16 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-6">
             <h3 className="text-lg font-bold text-primary">Reviews(10)</h3>

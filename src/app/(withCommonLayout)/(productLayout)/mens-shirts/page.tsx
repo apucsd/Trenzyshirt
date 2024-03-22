@@ -6,10 +6,7 @@ import Image from "next/image";
 
 const MensShirtsPage = async ({ searchParams }: { searchParams: any }) => {
   const { result: allProducts } = await getAllProducts(searchParams);
-  console.log(allProducts.length);
-  // console.log(searchParams);
-
-  // Convert the searchParams object to an array of [key, value] pairs
+  // console.log(allProducts.length);
 
   return (
     <div>
@@ -40,7 +37,7 @@ const MensShirtsPage = async ({ searchParams }: { searchParams: any }) => {
         </div>
       )}
       <div
-        className="my-5 grid
+        className="my-3 grid
        md:grid-cols-4 gap-3 justify-center place-items-center"
       >
         {allProducts?.map((item: TProduct) => (
