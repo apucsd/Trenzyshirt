@@ -34,10 +34,10 @@ export const HeroSection = () => {
   }, [currentSlider, sliders.length]);
 
   return (
-    <div className=" md:absolute z-[-999] top-0 md:left-1/2 md:transform md:-translate-x-1/2 w-full">
+    <div className=" w-full">
       <div className="flex   relative flex-col justify-between">
         <div
-          className="w-full h-72 sm:h-96 md:h-[100vh] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/10 before:inset-0 transform duration-1000 ease-linear  overflow-hidden"
+          className="w-full h-72 sm:h-96  md:h-[100vh]  flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/10 before:inset-0 transform duration-1000 ease-linear  overflow-hidden"
           style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}
         >
           {/* text container here */}

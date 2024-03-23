@@ -4,11 +4,11 @@ import { Star } from "lucide-react";
 import Link from "next/link";
 
 const FilterSidebar = async () => {
-  const ratingLinks = [
-    { rating: "4-5", label: "4-5", href: "/mens-shirts/?ratings=4-5" },
-    { rating: "3-4", label: "3-4", href: "/mens-shirts?ratings=3-4" },
-    { rating: "2-3", label: "0-3", href: "/mens-shirts?ratings=2-3" },
-  ];
+  // const ratingLinks = [
+  //   { rating: "4-5", label: "4-5", href: "/mens-shirts/?ratings=4-5" },
+  //   { rating: "3-4", label: "3-4", href: "/mens-shirts?ratings=3-4" },
+  //   { rating: "2-3", label: "0-3", href: "/mens-shirts?ratings=2-3" },
+  // ];
   const priceLinks = [
     { label: "Under ৳300", href: "/mens-shirts?price=100-300" },
     { label: "৳1000 to ৳1200", href: "/mens-shirts?price=1000-1200" },
@@ -20,7 +20,7 @@ const FilterSidebar = async () => {
   const categories = allDynamicCategory.map((item: TProduct) => item.category);
   const uniqueCategories: string[] = Array.from(new Set(categories));
   return (
-    <div className="col-span-3  p-5 min-h-screen">
+    <div className="col-span-12 md:col-span-3  p-5 min-h-screen">
       {/* filter by price */}
       <details open className="  w-full overflow-hidden  p-2">
         <summary className="flex flex-col cursor-pointer select-none items-center justify-between px-5 py-3 lg:hidden"></summary>

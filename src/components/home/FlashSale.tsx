@@ -16,7 +16,7 @@ const FlashSale = async () => {
   const { result: flashSales } = await res.json();
   // console.log(result);
   return (
-    <div className=" p-5 md:mt-[100vh]">
+    <div className=" p-5">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="md:text-4xl text-xl text-start font-medium">
