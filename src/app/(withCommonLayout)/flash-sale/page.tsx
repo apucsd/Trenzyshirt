@@ -6,7 +6,7 @@ import React from "react";
 
 const FlashSalePage = async () => {
   const res = await fetch(
-    "http://localhost:5000/products/filter?flashSale=true",
+    "https://trenzy-shirt-server.vercel.app/products/filter?flashSale=true",
     {
       next: {
         revalidate: 30,

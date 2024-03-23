@@ -1,14 +1,31 @@
 import getAllProducts from "@/hooks/getAllProducts";
 import { TProduct } from "@/types";
-import { Star } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import Link from "next/link";
 
 const FilterSidebar = async () => {
-  // const ratingLinks = [
-  //   { rating: "4-5", label: "4-5", href: "/mens-shirts/?ratings=4-5" },
-  //   { rating: "3-4", label: "3-4", href: "/mens-shirts?ratings=3-4" },
-  //   { rating: "2-3", label: "0-3", href: "/mens-shirts?ratings=2-3" },
-  // ];
+  const ratingLinks = [
+    {
+      rating: "4-5",
+      label: "Under 5 ⭐⭐⭐⭐⭐",
+      href: "/mens-shirts/?rating=5",
+    },
+    {
+      rating: "3-4",
+      label: "Upper 4 ⭐⭐⭐⭐",
+      href: "/mens-shirts?rating=4",
+    },
+    { rating: "2-3", label: "Upper 3 ⭐⭐⭐", href: "/mens-shirts?rating=3" },
+    { rating: "2-3", label: "Upper 2 4⭐⭐", href: "/mens-shirts?rating=2" },
+    { rating: "2-3", label: "Upper 1⭐", href: "/mens-shirts?rating=1" },
+  ];
   const priceLinks = [
     { label: "Under ৳300", href: "/mens-shirts?price=100-300" },
     { label: "৳1000 to ৳1200", href: "/mens-shirts?price=1000-1200" },
@@ -25,26 +42,27 @@ const FilterSidebar = async () => {
       <details open className="  w-full overflow-hidden  p-2">
         <summary className="flex flex-col cursor-pointer select-none items-center justify-between px-5 py-3 lg:hidden"></summary>
         <form className="flex flex-col border-t border-gray-200 lg:border-t-0">
-          {/* <fieldset className="w-full">
-            <legend className="block w-full font-semibold  px-5 text-lg">
-              Ratings
-            </legend>
-            <div className="space-y-1 py-2">
-              <hr className="border" />
-              <input type="range" id="rav" />
-              {ratingLinks.map((item) => (
-                <div key={item.href} className="flex items-center">
-                  <Link
-                    href={item.href}
-                    className="ml-3 my-2 w-full bg-white p-2 border rounded-md  hover:bg-slate-50 text-sm flex items-center gap-3 font-medium"
-                  >
-                    <Star className="text-yellow-500 size-4" />
-                    {item.label}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </fieldset> */}
+          <div className="my-4">
+            <fieldset className="w-full">
+              <legend className="block w-full font-semibold  px-5 text-lg">
+                Filter By Ratings
+              </legend>
+
+              <div className="space-y-1 py-2">
+                <hr className="border" />
+                {ratingLinks.map((item) => (
+                  <div key={item.href} className="flex items-center">
+                    <Link
+                      href={item.href}
+                      className="ml-3 my-2 w-full bg-white p-2 border rounded-md  hover:bg-slate-50 text-sm flex items-center gap-3 font-medium"
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </fieldset>
+          </div>
           <fieldset className="w-full">
             <legend className="block w-full font-semibold  px-5 text-lg">
               Price

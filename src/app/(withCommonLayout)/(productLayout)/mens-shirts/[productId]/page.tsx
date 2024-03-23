@@ -10,7 +10,7 @@ type TProductDetailsParams = {
 };
 
 export const generateStaticParams = async () => {
-  const res = await fetch(`http://localhost:5000/products`);
+  const res = await fetch(`https://trenzy-shirt-server.vercel.app/products`);
   const { result: products } = await res.json();
 
   return products.slice(0, 10).map((product: TProduct) => ({
@@ -24,7 +24,9 @@ const ProductDetails = async ({
 }) => {
   // console.log(params);
   const id = params.productId;
-  const res = await fetch(`http://localhost:5000/products/${id}`);
+  const res = await fetch(
+    `https://trenzy-shirt-server.vercel.app/products/${id}`
+  );
   const { result: product } = await res.json();
   // console.log(product);
   return (

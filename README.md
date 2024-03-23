@@ -4,7 +4,7 @@ Welcome to TrenzyShirt, your go-to destination for stylish and trendy men's shir
 
 ## Live URL
 
-You can access the live version of TrenzyShirt [here](https://trenzyshirt.vercel.app).
+You can access the live version of TrenzyShirt [here](https://trenzy-shirt.vercel.app).
 
 ## Features
 
