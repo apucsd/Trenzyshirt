@@ -1,11 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import Ratings from "@/components/ui/Ratings";
 import { Button } from "@/components/ui/button";
+import { TProduct } from "@/types";
 import Image from "next/image";
 import React from "react";
 
 type TProductDetailsParams = {
   productId: string;
+};
+
+export const generateStaticParams = async () => {
+  const res = await fetch(`http://localhost:5000/products`);
+  const { result: products } = await res.json();
+
+  return products.slice(0, 10).map((product: TProduct) => ({
+    productId: product._id,
+  }));
 };
 const ProductDetails = async ({
   params,

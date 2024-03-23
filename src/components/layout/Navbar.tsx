@@ -1,9 +1,15 @@
+"use client";
 /* eslint-disable jsx-a11y/alt-text */
 
+import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { toast } from "../ui/use-toast";
+import { usePathname } from "next/navigation";
 
 /* eslint-disable @next/next/no-img-element */
 const Navbar = () => {
+  const pathname = usePathname();
+  // console.log(pathname);
   const links = [
     {
       title: "Home",
@@ -38,11 +44,14 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="mb-2 md:text-xl ">
-      <div className="relative  flex max-w-screen-xl flex-col overflow-hidden px-4 py-4 sm:mx-auto sm:flex-row">
-        <h1>
-          {" "}
-          Trenzy<span className="text-[#6e5fbe] text-[2rem]">Shirt</span>
+    <header
+      className={`${
+        pathname === "/" ? "text-white" : "text-black"
+      } container md:text-xl `}
+    >
+      <div className="relative   flex flex-col overflow-hidden  py-4 sm:mx-auto sm:flex-row">
+        <h1 className="">
+          <span className="text-[#6e5fbe] text-[2rem]"> Trenzy</span>Shirt
         </h1>
         <input type="checkbox" className="peer hidden" id="navbar-open" />
         <label
@@ -75,12 +84,23 @@ const Navbar = () => {
           <ul className="flex flex-col gap-5  items-center sm:flex-row">
             {links.map((link) => (
               <li key={link.id} className="">
-                <Link href={link.link}>{link.title}</Link>
+                <Link className="font-light" href={link.link}>
+                  {link.title}
+                </Link>
               </li>
             ))}
           </ul>
           <ul className="mt-4 flex sm:mt-0">
-            <li className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
+            <li
+              onClick={() => {
+                toast({
+                  title: "Thanks for clicking here",
+                  description: "This feature is coming soon",
+                  duration: 1000,
+                });
+              }}
+              className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -96,42 +116,40 @@ const Navbar = () => {
                 />
               </svg>
             </li>
-            <li className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
+            <li
+              onClick={() => {
+                toast({
+                  title: "Thanks for clicking here",
+                  description: "This feature is coming soon",
+                  duration: 1000,
+                });
+              }}
+              className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow"
+            >
+              <ShoppingCart />
             </li>
             <li className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
+              <Link href={"/dashboard/all-products"}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="white"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </Link>
             </li>
           </ul>
         </nav>

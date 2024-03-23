@@ -5,7 +5,9 @@ const getAllProducts = async (query: any) => {
     const [[key, value]] = Object.entries(query);
     url = `http://localhost:5000/products/filter?${key}=${value}`;
   }
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    cache: "no-cache",
+  });
   return await res.json();
 };
 
