@@ -4,7 +4,7 @@ import "./globals.css";
 import Providers from "@/providers/Providers";
 import { Toaster } from "react-hot-toast";
 
-const lato = Lato({ subsets: ["latin"], weight: "400" });
+const lato = Lato({ subsets: ["latin-ext"], weight: "300" });
 
 export const metadata: Metadata = {
   title: "TrenzyShirt",

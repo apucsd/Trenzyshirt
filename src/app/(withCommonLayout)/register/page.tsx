@@ -52,10 +52,10 @@ const RegisterPage = () => {
                 <CustomInput name="email" type="email" label="Email" />
                 <CustomInput name="password" type="password" label="Password" />
                 <Button
-                  className="my-4
-           w-full"
+                  className="my-4 w-full"
                   color="primary"
                   type="submit"
+                  variant="shadow"
                 >
                   Register
                 </Button>

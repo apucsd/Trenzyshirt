@@ -1,12 +1,15 @@
 "use client";
 
-import { store } from "@/redux/store";
+import { persistor, store } from "@/redux/store";
 import { NextUIProvider } from "@nextui-org/react";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
-      <NextUIProvider>{children}</NextUIProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <NextUIProvider>{children}</NextUIProvider>
+      </PersistGate>
     </Provider>
   );
 };

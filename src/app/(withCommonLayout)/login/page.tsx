@@ -68,6 +68,7 @@ const LoginPage = () => {
                  w-full"
                   color="primary"
                   type="submit"
+                  variant="shadow"
                 >
                   Login
                 </Button>
