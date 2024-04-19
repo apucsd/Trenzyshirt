@@ -1,157 +1,112 @@
 "use client";
-/* eslint-disable jsx-a11y/alt-text */
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarMenuToggle,
+  NavbarMenuItem,
+  NavbarMenu,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+} from "@nextui-org/react";
+import React from "react";
+import { CiShoppingCart } from "react-icons/ci";
 
-import { ShoppingCart } from "lucide-react";
-import Link from "next/link";
-import { toast } from "../ui/use-toast";
-import { usePathname } from "next/navigation";
+const TopNavbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-/* eslint-disable @next/next/no-img-element */
-const Navbar = () => {
-  const pathname = usePathname();
-  // console.log(pathname);
-  const links = [
-    {
-      title: "Home",
-      link: "/",
-      id: 1,
-    },
-    {
-      title: "Flash Sale",
-      link: "/flash-sale",
-      id: 2,
-    },
-    {
-      title: "Products",
-      link: "/mens-shirts",
-      id: 3,
-    },
-    {
-      title: "Dashboard",
-      link: "/dashboard/all-products",
-      id: 4,
-    },
-    // {
-    //   title: "About Us",
-    //   link: "/about-us",
-    //   id: 5,
-    // },
-    // {
-    //   title: "Contact Us",
-    //   link: "/contact-us",
-    //   id: 6,
-    // },
-  ];
+  const menuItems = ["Home", "Flash Sale", "Products", "Log Out"];
 
   return (
-    <header className={` container md:text-xl `}>
-      <div className="relative   flex flex-col overflow-hidden  py-4 sm:mx-auto sm:flex-row">
-        <h1 className="">
-          <span className="text-[#6e5fbe] text-[2rem]"> Trenzy</span>Shirt
-        </h1>
-        <input type="checkbox" className="peer hidden" id="navbar-open" />
-        <label
-          className="absolute right-4 top-5 cursor-pointer sm:hidden"
-          htmlFor="navbar-open"
-        >
-          <span className="sr-only">Toggle menu</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="white"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </label>
-        <nav
-          aria-labelledby="header-navigation"
-          className="peer-checked:mt-8 peer-checked:max-h-52 flex max-h-0 w-full flex-col items-center justify-between overflow-hidden transition-all sm:ml-24 sm:max-h-full sm:flex-row sm:items-start"
-        >
-          <h2 className="sr-only" id="header-navigation">
-            Header navigation
-          </h2>
-          <ul className="flex flex-col gap-5  items-center sm:flex-row">
-            {links.map((link) => (
-              <li key={link.id} className="">
-                <Link className="font-light" href={link.link}>
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ul className="mt-4 flex sm:mt-0">
-            <li
-              onClick={() => {
-                toast({
-                  title: "Thanks for clicking here",
-                  description: "This feature is coming soon",
-                  duration: 1000,
-                });
-              }}
-              className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow"
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
+      </NavbarContent>
+
+      <NavbarContent className="sm:hidden pr-3" justify="center">
+        <NavbarBrand>
+          <Link color="foreground" href="/">
+            <h2>Trenzy</h2>
+            <p className="font-bold text-inherit text-primary-500">Shirt</p>
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarBrand>
+          <Link color="foreground" href="/">
+            <h2>Trenzy</h2>
+            <p className="font-bold text-inherit text-primary-500">Shirt</p>
+          </Link>
+        </NavbarBrand>
+        <NavbarItem>
+          <Link color="foreground" href="/">
+            Home
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="flash-sale" aria-current="page">
+            Flash Sale
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="mens-shirts">
+            All Products
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="about-us">
+            About Us
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent justify="end">
+        <NavbarItem>
+          <div>
+            <link href="/cart" />
+            <div className="relative py-2">
+              <div className="t-0 absolute right-0">
+                <p className="flex size-1 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                  3
+                </p>
+              </div>
+              <CiShoppingCart className="size-10" />
+            </div>
+          </div>
+        </NavbarItem>
+
+        <NavbarItem>
+          <Button as={Link} color="primary" href="/register" variant="shadow">
+            Sign Up
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className="w-full"
+              color={
+                index === 2
+                  ? "warning"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
+              }
+              href="#"
+              size="lg"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="white"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </li>
-            <li
-              onClick={() => {
-                toast({
-                  title: "Thanks for clicking here",
-                  description: "This feature is coming soon",
-                  duration: 1000,
-                });
-              }}
-              className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow"
-            >
-              <ShoppingCart />
-            </li>
-            <li className="ml-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
-              <Link href={"/dashboard/all-products"}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="white"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
   );
 };
-
-export default Navbar;
+export default TopNavbar;
