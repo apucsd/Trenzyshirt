@@ -18,6 +18,7 @@ import { CiShoppingCart } from "react-icons/ci";
 
 const TopNavbar = () => {
   const { user } = useAppSelector((state) => state.auth);
+  const { products } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -86,17 +87,18 @@ const TopNavbar = () => {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <div>
-            <link className="text-black uppercase font-medium" href="/cart" />
-            <div className="relative py-2">
-              <div className="t-0 absolute right-0">
-                <p className="flex size-1 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
-                  3
-                </p>
+          <Link href="/cart">
+            <div>
+              <div className="relative py-2">
+                <div className="t-0 absolute right-0">
+                  <p className="flex size-1 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                    {products?.length}
+                  </p>
+                </div>
+                <CiShoppingCart className="size-10" />
               </div>
-              <CiShoppingCart className="size-10" />
             </div>
-          </div>
+          </Link>
         </NavbarItem>
 
         <NavbarItem>

@@ -36,8 +36,8 @@ const FlashSale = async () => {
         className="my-5 grid
        md:grid-cols-4 gap-3 justify-center place-items-center"
       >
-        {flashSales?.slice(0, 4).map((item: TProduct) => (
-          <ProductCard key={item._id} {...item} />
+        {flashSales?.slice(0, 4).map((product: TProduct) => (
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>

@@ -36,8 +36,8 @@ const TrendingProduct = async () => {
         className="my-10 grid
      md:grid-cols-3 gap-5  justify-center place-items-center"
       >
-        {trendingProducts.map((item: TProduct) => (
-          <ProductCard key={item._id} {...item} />
+        {trendingProducts.map((product: TProduct) => (
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>
