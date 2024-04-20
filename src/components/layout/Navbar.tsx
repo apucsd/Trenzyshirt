@@ -34,7 +34,12 @@ const TopNavbar = () => {
     toast.success("Logged out successfully!!!");
   };
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      maxWidth="xl"
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -54,7 +59,7 @@ const TopNavbar = () => {
         <NavbarBrand className="font-mono">
           <Link href="/" className="text-2xl">
             <h2 className="text-black">Trenzy</h2>
-            <p className=" bg-secondary rounded px-1 text-white shadow-sm">
+            <p className=" bg-primary rounded px-1 text-white shadow-sm">
               Shirt
             </p>
           </Link>

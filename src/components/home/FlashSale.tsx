@@ -1,8 +1,8 @@
 import { ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import ProductCard from "../ui/ProductCard";
 import { TProduct } from "@/types";
+import { Button } from "@nextui-org/react";
 
 const FlashSale = async () => {
   const res = await fetch(
@@ -19,13 +19,13 @@ const FlashSale = async () => {
     <div className=" p-5">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="md:text-4xl text-xl text-start font-medium">
+          <h1 className="md:text-4xl uppercase text-xl text-start font-medium">
             Flash Sale
           </h1>
         </div>
         <div>
           <Link href="/flash-sale">
-            <Button>
+            <Button variant="shadow" color="primary">
               View All <ChevronRight />
             </Button>
           </Link>

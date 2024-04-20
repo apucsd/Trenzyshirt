@@ -134,7 +134,7 @@ const Category = () => {
 
   return (
     <div className="my-5">
-      <h1 className="md:text-4xl text-xl text-center font-medium">
+      <h1 className="md:text-4xl text-x uppercasel text-center font-medium">
         Top Categories
       </h1>
 

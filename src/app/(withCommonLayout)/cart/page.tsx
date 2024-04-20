@@ -4,7 +4,8 @@ import { CircleArrowOutUpLeftIcon } from "lucide-react";
 
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
-import CartProductCard from "@/components/ui/cartProductCard";
+import CheckOutModal from "@/components/modal/CheckOutModal";
+import CartProductCard from "@/components/ui/CartProductCard";
 
 const ProductCartPage = () => {
   const { products, subTotal, deliveryCharge, total } = useAppSelector(
@@ -75,13 +76,8 @@ const ProductCartPage = () => {
                 <span>Total cost</span>
                 <span>৳ {total.toFixed(2)}</span>
               </div>
-              <Button
-                variant="shadow"
-                color="primary"
-                className="uppercase w-full"
-              >
-                Checkout
-              </Button>
+
+              <CheckOutModal />
             </div>
           </div>
         </div>
