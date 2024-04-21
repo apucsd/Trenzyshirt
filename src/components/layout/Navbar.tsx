@@ -13,13 +13,13 @@ import {
   Button,
 } from "@nextui-org/react";
 import React from "react";
-import toast from "react-hot-toast";
 import { CiShoppingCart } from "react-icons/ci";
+import NavDropdown from "./NavDropdown";
 
 const TopNavbar = () => {
   const { user } = useAppSelector((state) => state.auth);
   const { products } = useAppSelector((state) => state.cart);
-  const dispatch = useAppDispatch();
+
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -29,10 +29,6 @@ const TopNavbar = () => {
     { label: "About Us", href: "/about-us" },
   ];
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    toast.success("Logged out successfully!!!");
-  };
   return (
     <Navbar
       maxWidth="xl"
@@ -108,9 +104,9 @@ const TopNavbar = () => {
 
         <NavbarItem>
           {user ? (
-            <Button color="primary" onClick={handleLogout} variant="shadow">
-              Logout
-            </Button>
+            <>
+              <NavDropdown />
+            </>
           ) : (
             <Button color="primary" as={Link} href="/login" variant="shadow">
               Login

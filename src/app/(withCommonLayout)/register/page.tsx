@@ -27,7 +27,7 @@ const RegisterPage = () => {
       <div className="flex h-screen items-center justify-center bg-[#8EA7E9]/20 p-6 md:p-0">
         <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[90%] md:w-[80%] lg:h-[80%]">
           {/* register design side  */}
-          <div className="relative hidden h-full items-center justify-center bg-primary/80 md:flex md:w-[60%] lg:w-[60%]">
+          <div className="relative hidden h-full items-center justify-center bg-secondary md:flex md:w-[60%] lg:w-[60%]">
             <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-r from-yellow-200 to-pink-400"></div>
             <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-r from-blue-400 to-emerald-400"></div>
             <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-r from-purple-200 to-purple-800 transition-all"></div>
