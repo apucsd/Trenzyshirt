@@ -4,19 +4,22 @@ import CustomInput from "@/components/form/CustomInput";
 import { useRegisterMutation } from "@/redux/api/authApi";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FieldValues } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const RegisterPage = () => {
+  const router = useRouter();
   const [register] = useRegisterMutation();
   const handleRegister = async (values: FieldValues) => {
     try {
       const res = await register(values).unwrap();
-      console.log(res);
+      // console.log(res);
 
       if (res?.success) {
         toast.success("User registered successfully");
+        router.push("/login");
       }
     } catch (error: any) {
       toast.error(error?.data?.message || "Something went wrong");
