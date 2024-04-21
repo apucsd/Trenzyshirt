@@ -74,6 +74,11 @@ const cartSlice = createSlice({
       state.subTotal = calculateSubTotal(state.products);
       state.total = calculateGrandTotal(state);
     },
+    resetCart: (state) => {
+      state.products = [];
+      state.subTotal = 0;
+      state.total = 0;
+    },
   },
 });
 
@@ -85,6 +90,7 @@ const calculateSubTotal = (products: TCartProduct[]): number =>
 const calculateGrandTotal = (state: TInitialState): number =>
   state.subTotal > 0 ? state.subTotal + state.deliveryCharge : state.subTotal;
 
-export const { addToCart, updateQuantity, removeFromCart } = cartSlice.actions;
+export const { addToCart, updateQuantity, removeFromCart, resetCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

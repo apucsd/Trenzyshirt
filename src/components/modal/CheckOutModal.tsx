@@ -1,4 +1,5 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Modal,
   ModalContent,
@@ -11,13 +12,41 @@ import CustomForm from "../form/CustomForm";
 import { FieldValues } from "react-hook-form";
 import CustomInput from "../form/CustomInput";
 import toast from "react-hot-toast";
+import { TCartProduct, resetCart } from "@/redux/features/cartSlice";
+import { CheckOutSchema, defaultValues } from "@/Schema/validation.schema";
+import { useCreateOrderMutation } from "@/redux/api/orderApi";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+type TModalProps = {
+  products: TCartProduct[];
+  total: number;
+};
 
-export default function CheckOutModal() {
+export default function CheckOutModal({ products, total }: TModalProps) {
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const handleSubmit = (values: FieldValues) => {
-    console.log(values);
+  const [createOrder] = useCreateOrderMutation();
+  const handleSubmit = async (values: FieldValues) => {
+    if (user) {
+      try {
+        const checkOutInfo = {
+          userInfo: values,
+          price: total,
+          products,
+        };
+        const res = await createOrder(checkOutInfo).unwrap();
+        // console.log(res);
+        if (res?.success) {
+          toast.success(res?.message);
+          dispatch(resetCart());
+        }
+      } catch (error) {
+        toast.error("Something went wrong while ordering!!!");
+      }
+    } else {
+      toast.error("Please login and try again!!!");
+    }
     onOpenChange();
-    toast.success("Order Placed successfully!!!");
   };
   return (
     <>
@@ -27,7 +56,7 @@ export default function CheckOutModal() {
         color="primary"
         className="uppercase w-full"
       >
-        Checkout
+        Proceed Checkout
       </Button>
       <Modal
         size="xl"
@@ -42,7 +71,11 @@ export default function CheckOutModal() {
                 Checkout
               </ModalHeader>
               <ModalBody>
-                <CustomForm onSubmit={handleSubmit}>
+                <CustomForm
+                  onSubmit={handleSubmit}
+                  resolver={zodResolver(CheckOutSchema)}
+                  defaultValues={defaultValues}
+                >
                   <div className="mb-6">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
@@ -95,6 +128,9 @@ export default function CheckOutModal() {
                     </div>
                   </div>
                   <div className="flex justify-end gap-3">
+                    <Button disabled type="submit">
+                      SSLCOMMERZ
+                    </Button>
                     <Button type="submit" color="primary">
                       Get Cash On Delivery
                     </Button>

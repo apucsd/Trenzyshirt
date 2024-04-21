@@ -25,10 +25,11 @@ const CustomInput = ({ name, type, label, placeholder }: TInputProps) => {
               variant="underlined"
               label={label}
               placeholder={placeholder}
-              errorMessage={
-                errors[name] && (errors[name] as FieldError).message
-              }
             />
+            <span className="text-xs text-red-500">
+              {" "}
+              {errors[name] && (errors[name] as FieldError).message}
+            </span>
           </>
         );
       }}
