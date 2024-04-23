@@ -31,6 +31,13 @@ const orderApi = baseApi.injectEndpoints({
       }),
       providesTags: ["orders"],
     }),
+    myOrders: builder.query({
+      query: (email) => ({
+        url: `/my-orders/${email}`,
+        method: "GET",
+      }),
+      providesTags: ["orders"],
+    }),
   }),
 });
 
@@ -39,4 +46,5 @@ export const {
   useCreateOrderMutation,
   useUpdateOrderMutation,
   useDeleteOrderMutation,
+  useMyOrdersQuery,
 } = orderApi;

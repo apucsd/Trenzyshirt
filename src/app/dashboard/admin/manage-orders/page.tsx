@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React from "react";
 import {
@@ -78,8 +79,8 @@ export default function ManageOrders() {
   const renderCell = React.useCallback(
     (order: TOrder, columnKey: string | number) => {
       // console.log(product);
-      const cellValue = order[columnKey];
-      console.log(cellValue);
+      const cellValue = order[columnKey as keyof TOrder] as string | number;
+
       switch (columnKey) {
         case "customerName":
           return (
@@ -98,7 +99,7 @@ export default function ManageOrders() {
           return (
             <Chip
               className="capitalize"
-              color={statusColorMap[order.status]}
+              color={statusColorMap[order?.status] as "success" | "danger"}
               size="sm"
               variant="flat"
             >

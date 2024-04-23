@@ -16,12 +16,14 @@ import { TCartProduct, resetCart } from "@/redux/features/cartSlice";
 import { CheckOutSchema, defaultValues } from "@/Schema/validation.schema";
 import { useCreateOrderMutation } from "@/redux/api/orderApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useRouter } from "next/navigation";
 type TModalProps = {
   products: TCartProduct[];
   total: number;
 };
 
 export default function CheckOutModal({ products, total }: TModalProps) {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -30,6 +32,7 @@ export default function CheckOutModal({ products, total }: TModalProps) {
     if (user) {
       try {
         const checkOutInfo = {
+          email: user.email,
           userInfo: values,
           price: total,
           products,
@@ -39,6 +42,7 @@ export default function CheckOutModal({ products, total }: TModalProps) {
         if (res?.success) {
           toast.success(res?.message);
           dispatch(resetCart());
+          router.push("/dashboard");
         }
       } catch (error) {
         toast.error("Something went wrong while ordering!!!");

@@ -33,9 +33,17 @@ export interface TUserInfo {
 }
 
 export type TOrder = {
+  email: string;
   _id: string;
   userInfo: TUserInfo;
   products: TProduct[];
   price: number;
-  status: string;
+  status: "delivered" | "pending";
+};
+export type TOrderTable = {
+  orderId: string;
+  shippingMethod: string;
+  trackingNumber: string;
+  products: TProduct;
+  status: "pending" | "delivered";
 };

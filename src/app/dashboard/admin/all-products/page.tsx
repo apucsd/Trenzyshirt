@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React from "react";
 import {
@@ -18,15 +19,8 @@ import {
 } from "@/redux/api/productApi";
 import { TProduct } from "@/types";
 import toast from "react-hot-toast";
-
-const columns = [
-  { name: "Name", uid: "name" },
-
-  { name: "Category", uid: "category" },
-  { name: "Description", uid: "description" },
-  { name: "Price", uid: "price" },
-  { name: "Action", uid: "actions" },
-];
+import Link from "next/link";
+import { allProductTableColumns } from "@/constant/constant";
 
 export default function AllProducts() {
   const { data, isFetching } = useGetAllProductsQuery({});
@@ -86,9 +80,13 @@ export default function AllProducts() {
           return (
             <div className="relative flex items-center gap-2">
               <Tooltip content="Edit user">
-                <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                  <AiOutlineEdit />
-                </span>
+                <Link
+                  href={`/dashboard/admin/all-products/edit/${product._id}`}
+                >
+                  <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                    <AiOutlineEdit />
+                  </span>
+                </Link>
               </Tooltip>
               <Tooltip color="danger" content="Delete user">
                 <span
@@ -112,7 +110,7 @@ export default function AllProducts() {
   }
   return (
     <Table aria-label="Example table with custom cells">
-      <TableHeader columns={columns}>
+      <TableHeader columns={allProductTableColumns}>
         {(column) => (
           <TableColumn
             key={column.uid}
