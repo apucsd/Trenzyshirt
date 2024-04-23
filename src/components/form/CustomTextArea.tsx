@@ -1,22 +1,20 @@
-import { Input } from "@nextui-org/react";
+import { Textarea } from "@nextui-org/react";
 import { Controller, useFormContext } from "react-hook-form";
 import { FieldError } from "react-hook-form";
 
 type TInputProps = {
   name: string;
-  type: string;
+
   placeholder?: string;
   label?: string;
-  variant?: "flat" | "underlined" | "bordered";
+  variant?: "flat" | "underlined" | "bordered" | "faded" | undefined;
   isRequired?: boolean;
 };
 
-const CustomInput = ({
+const CustomTextArea = ({
   name,
-  type,
   label,
-  placeholder,
-  variant = "underlined",
+  variant = "bordered",
   isRequired = false,
 }: TInputProps) => {
   const { control } = useFormContext();
@@ -28,14 +26,14 @@ const CustomInput = ({
       render={({ field, formState: { errors } }) => {
         return (
           <>
-            <Input
-              {...field}
+            <Textarea
               isRequired={isRequired}
-              type={type}
+              {...field}
               variant={variant}
               label={label}
-              placeholder={placeholder}
-              className="w-full "
+              labelPlacement="outside"
+              placeholder="Enter your description"
+              className="col-span-12 md:col-span-6 mb-6 md:mb-0"
             />
             <span className="text-xs text-red-500">
               {errors[name] && (errors[name] as FieldError).message}
@@ -47,4 +45,4 @@ const CustomInput = ({
   );
 };
 
-export default CustomInput;
+export default CustomTextArea;

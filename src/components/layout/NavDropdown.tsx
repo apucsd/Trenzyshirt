@@ -37,8 +37,10 @@ export default function NavDropdown() {
             <p className="font-semibold">Signed in as</p>
             <p className="font-semibold">{user?.email}</p>
           </DropdownItem>
-          <DropdownItem key="dashboard">
-            <Link href="/dashboard">Dashboard</Link>
+          <DropdownItem href="/dashboard" key="dashboard">
+            {/* <Link href="/dashboard"> */}
+            Dashboard
+            {/* </Link> */}
           </DropdownItem>
           <DropdownItem key="settings">My Profile</DropdownItem>
           <DropdownItem key="settings">Settings</DropdownItem>
