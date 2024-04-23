@@ -21,3 +21,21 @@ export interface TLink {
 }
 
 export type TUserRole = keyof typeof USER_ROLE;
+export interface TUserInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+}
+
+export type TOrder = {
+  _id: string;
+  userInfo: TUserInfo;
+  products: TProduct[];
+  price: number;
+  status: string;
+};
