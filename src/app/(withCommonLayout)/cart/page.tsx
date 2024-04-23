@@ -78,7 +78,12 @@ const ProductCartPage = () => {
                   <span>৳ {total.toFixed(2)}</span>
                 </div>
 
-                <CheckOutModal products={products} total={total} />
+                <CheckOutModal
+                  products={products}
+                  total={total}
+                  subTotal={subTotal}
+                  deliveryCharge={deliveryCharge}
+                />
               </div>
             </div>
           </div>

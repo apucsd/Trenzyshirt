@@ -20,9 +20,16 @@ import { useRouter } from "next/navigation";
 type TModalProps = {
   products: TCartProduct[];
   total: number;
+  deliveryCharge: number;
+  subTotal: number;
 };
 
-export default function CheckOutModal({ products, total }: TModalProps) {
+export default function CheckOutModal({
+  products,
+  total,
+  deliveryCharge,
+  subTotal,
+}: TModalProps) {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
@@ -36,6 +43,8 @@ export default function CheckOutModal({ products, total }: TModalProps) {
           userInfo: values,
           price: total,
           products,
+          deliveryCharge,
+          subTotal,
         };
         const res = await createOrder(checkOutInfo).unwrap();
         // console.log(res);

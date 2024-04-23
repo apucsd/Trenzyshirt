@@ -28,7 +28,6 @@ const EditProductPage = ({ params }: { params: { productId: string } }) => {
 
     try {
       const res = await updateSingleProduct(updateSingleProductInfo).unwrap();
-      console.log(res);
       if (res.success) {
         toast.success(res.message);
       }

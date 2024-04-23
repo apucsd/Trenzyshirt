@@ -17,6 +17,7 @@ import {
 import { TOrder, TOrderTable } from "@/types";
 import { useMyOrdersQuery } from "@/redux/api/orderApi";
 import { useAppSelector } from "@/redux/hook";
+import Link from "next/link";
 
 const columns = [
   { name: "Order ID", uid: "orderId" },
@@ -62,8 +63,14 @@ export default function MyOrders() {
         case "action":
           return (
             <div className="">
-              <Button variant="shadow" color="primary" size="sm">
-                Download Invoice
+              <Button
+                as={Link}
+                href={`/dashboard/user/my-orders/invoice/${order.orderId}`}
+                variant="shadow"
+                color="primary"
+                size="sm"
+              >
+                Check Invoice
               </Button>
             </div>
           );
