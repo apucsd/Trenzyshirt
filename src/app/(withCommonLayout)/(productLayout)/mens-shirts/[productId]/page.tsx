@@ -1,13 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 import AddToCartButton from "@/components/ui/AddToCartButton";
 import { TProduct } from "@/types";
-import { Button } from "@nextui-org/react";
+import { Metadata } from "next";
 
 import React from "react";
 
 type TProductDetailsParams = {
   productId: string;
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: TProductDetailsParams;
+}): Promise<Metadata> {
+  // read route params
+  const id = params.productId;
+
+  // fetch data
+  const product = await fetch(
+    `https://trenzy-shirt-server.vercel.app/products/${id}`
+  );
+  const resMetadata = await product.json();
+  // console.log(resMetadata);
+
+  return {
+    title: resMetadata.result.name,
+    description: resMetadata.result.description,
+  };
+}
 
 export const generateStaticParams = async () => {
   const res = await fetch(`https://trenzy-shirt-server.vercel.app/products`);
