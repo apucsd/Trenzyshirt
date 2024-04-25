@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 
 const TrendingProduct = async () => {
   const res = await fetch(
-    "https://trenzy-shirt-server.vercel.app/products/filter?topRated=true",
+    `${process.env.NEXT_PUBLIC_BACKEND_API}/products/filter/top-rated`,
     {
       next: {
         revalidate: 30,
@@ -14,19 +14,19 @@ const TrendingProduct = async () => {
     }
   );
   const { result: trendingProducts } = await res.json();
-  // console.log(trendingProducts);
   return (
     <div className="my-10 p-5">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="md:text-4xl uppercase text-xl text-start font-medium">
-            Trending Products
+          <h1 className="md:text-4xl truncate uppercase text-xl text-start font-medium">
+            Top Rated Products
           </h1>
         </div>
         <div>
           <Link href="/mens-shirts">
             <Button variant="shadow" color="primary">
-              See All Products <ChevronRight />
+              See All
+              <ChevronRight />
             </Button>
           </Link>
         </div>
@@ -36,7 +36,7 @@ const TrendingProduct = async () => {
         className="my-10 grid
      md:grid-cols-3 gap-5  justify-center place-items-center"
       >
-        {trendingProducts.map((product: TProduct) => (
+        {trendingProducts.slice(0, 6).map((product: TProduct) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>

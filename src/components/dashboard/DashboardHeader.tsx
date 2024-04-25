@@ -31,13 +31,15 @@ const DashboardHeader = () => {
             </Link>
           </div>
           <div className="flex gap-3 items-center">
-            <Input
-              type="email"
-              labelPlacement="outside"
-              startContent={
-                <CiSearch className="text-2xl hidden md:block text-default-400 pointer-events-none flex-shrink-0" />
-              }
-            />
+            <div className="hidden md:block">
+              <Input
+                type="email"
+                labelPlacement="outside"
+                startContent={
+                  <CiSearch className="text-2xl hidden md:block text-default-400 pointer-events-none flex-shrink-0" />
+                }
+              />
+            </div>
 
             <div className="hidden lg:flex items-center">
               <span className="text-base text-nowrap font-normal text-gray-500 mr-5">

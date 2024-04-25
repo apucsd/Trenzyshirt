@@ -4,6 +4,7 @@ import { useAppDispatch } from "@/redux/hook";
 import { TProduct } from "@/types";
 import { Button } from "@nextui-org/react";
 import React from "react";
+import toast from "react-hot-toast";
 
 const AddToCartButton = ({ product }: { product: TProduct }) => {
   const dispatch = useAppDispatch();

@@ -25,7 +25,7 @@ const TopNavbar = () => {
   const menuItems = [
     { label: "Home", href: "/home" },
     { label: "Flash Sale", href: "/flash-sale" },
-    { label: "Products", href: "/products" },
+    { label: "Products", href: "/mens-shirts" },
     { label: "About Us", href: "/about-us" },
   ];
 
@@ -44,9 +44,11 @@ const TopNavbar = () => {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand className="font-mono">
-          <Link className="text-black uppercase font-medium" href="/">
-            <h2>Trenzy</h2>
-            <p className="font-bold  text-primary-500">Shirt</p>
+          <Link href="/" className="text-2xl">
+            <h2 className="text-black">Trenzy</h2>
+            <p className=" bg-primary rounded px-1 text-white shadow-sm">
+              Shirt
+            </p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -68,19 +70,22 @@ const TopNavbar = () => {
         <NavbarItem>
           <Link
             className="text-black uppercase font-medium"
-            href="flash-sale"
+            href="/flash-sale"
             aria-current="page"
           >
             Flash Sale
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-black uppercase font-medium" href="mens-shirts">
+          <Link
+            className="text-black uppercase font-medium"
+            href="/mens-shirts"
+          >
             All Products
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-black uppercase font-medium" href="about-us">
+          <Link className="text-black uppercase font-medium" href="/about-us">
             About Us
           </Link>
         </NavbarItem>
@@ -115,7 +120,7 @@ const TopNavbar = () => {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="flex flex-col gap-5 py-4 items-center">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link

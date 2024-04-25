@@ -18,7 +18,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
   };
   // console.log(image);
   return (
-    <div className=" bg-white w-full md:max-w-xs shadow-md rounded-xl duration-500">
+    <div className=" bg-white w-full  shadow-md rounded-xl duration-500">
       <div className="group  flex w-full flex-col overflow-hidden bg-white">
         <div className="relative  overflow-hidden">
           <div className="relative mx-3 mt-3 flex overflow-hidden rounded-xl">
@@ -30,12 +30,12 @@ const ProductCard = ({ product }: { product: TProduct }) => {
               alt="product image"
             />
             <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
-              39% OFF
+              {product?.price * 0.01}% OFF
             </span>
           </div>
 
           <div className="absolute flex flex-col -right-16 bottom-0 mr-2 mb-4 space-y-2 transition-all duration-300 group-hover:right-0">
-            <Link href={`/mens-shirts/${product?._id}`}>
+            <Link href={`/single-shirt/${product?._id}`}>
               <Button size="sm" variant="shadow">
                 <EyeIcon className="size-4" />
               </Button>

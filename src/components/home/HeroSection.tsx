@@ -7,17 +7,17 @@ export const HeroSection = () => {
     {
       img: "https://www.trendzbd.com/images/media/2022/03/CfJJt27309.jpg",
       title: "Explore Our Latest Arrivals!",
-      des: "Indulge in sophistication with our newest collection. Elevate your wardrobe with stylish pieces that exude confidence and allure.",
+      des: "Elevate your wardrobe with stylish pieces that exude confidence and allure.",
     },
     {
       img: "https://www.trendzbd.com/images/media/2024/03/w7SK814112.jpg",
       title: "Don't Miss Out on Our Exclusive Flash Sale!",
-      des: "Unbeatable deals await! Shop now and indulge in luxury without breaking the bank. Limited time offer, act fast!",
+      des: "Unbeatable deals await! Shop now and indulge in luxury without breaking the bank.",
     },
     {
       img: "https://www.trendzbd.com/images/media/2022/03/V0uCG03101.jpg",
       title: "Stay Chic & Glamorous This Summer!",
-      des: "Beat the heat in style with our sizzling summer essentials. From sultry dresses to statement swimwear, unleash your inner fashionista.",
+      des: "Beat the heat in style with our sizzling summer essentials. ",
     },
   ];
 
@@ -42,7 +42,7 @@ export const HeroSection = () => {
         >
           {/* text container here */}
           <div className="drop-shadow-lg text-white text-center px-5">
-            <h1 className="text-xl lg:text-6xl font-semibold mb-3">
+            <h1 className="text-2xl lg:text-6xl font-semibold mb-3">
               {sliders[currentSlider].title}
             </h1>
             <p className="text-sm md:w-1/2 my-5 mx-auto md:text-base lg:text-lg">

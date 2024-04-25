@@ -23,7 +23,7 @@ export const generatePDF = (target: string) => {
       pdf.addImage(canvas, "PNG", xPos, yPos, imgWidth, imgHeight);
 
       // Save the PDF
-      pdf.save("chart-visualization.pdf");
+      pdf.save("invoice.pdf");
     });
   } else {
     console.error(`Element with ID '${target}' not found.`);

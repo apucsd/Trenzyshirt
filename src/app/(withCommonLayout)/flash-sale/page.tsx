@@ -6,7 +6,7 @@ import React from "react";
 
 const FlashSalePage = async () => {
   const res = await fetch(
-    "https://trenzy-shirt-server.vercel.app/products/filter?flashSale=true",
+    `${process.env.NEXT_PUBLIC_BACKEND_API}/products/filter/flash-sales`,
     {
       next: {
         revalidate: 30,
@@ -27,7 +27,7 @@ const FlashSalePage = async () => {
         <div className=" p-5">
           <div className="my-5 container grid md:grid-cols-4  justify-center place-items-center">
             {flashSales?.map((item: TProduct) => (
-              <ProductCard key={item._id} {...item} />
+              <ProductCard key={item._id} product={item} />
             ))}
           </div>
         </div>

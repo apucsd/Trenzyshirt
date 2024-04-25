@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 
 const FlashSale = async () => {
   const res = await fetch(
-    "https://trenzy-shirt-server.vercel.app/products/filter?flashSale=true",
+    `${process.env.NEXT_PUBLIC_BACKEND_API}/products/filter/flash-sales`,
     {
       next: {
         revalidate: 30,
@@ -14,7 +14,7 @@ const FlashSale = async () => {
     }
   );
   const { result: flashSales } = await res.json();
-  // console.log(result);
+
   return (
     <div className=" p-5">
       <div className="flex justify-between items-center">
@@ -39,6 +39,9 @@ const FlashSale = async () => {
         {flashSales?.slice(0, 4).map((product: TProduct) => (
           <ProductCard key={product._id} product={product} />
         ))}
+      </div>
+      <div className="flex max-sm:flex-col items-center justify-center bg-primary text-white px-6 py-3.5 rounded font-[sans-serif]">
+        <p className="text-base">Limited Time Offer: Get Upto 50% Off!</p>
       </div>
     </div>
   );

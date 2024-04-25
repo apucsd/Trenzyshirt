@@ -13,9 +13,9 @@ import Image from "next/image";
 const AboutUsPage = () => {
   return (
     <div>
-      <section className="relative  bg-white min-w-screen">
-        <div className="container px-10 mx-auto sm:px-5">
-          <div className="w-full lg:flex">
+      <section className="relative my-10 p-5  bg-white">
+        <div className="md:container mx-auto">
+          <div className={`w-full lg:flex  gap-5`}>
             <div className="w-full lg:w-1/2 xl:w-2/3">
               <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
                 <Image
@@ -92,7 +92,7 @@ const AboutUsPage = () => {
                 />
               </div>
             </div>
-            <div className="w-full mt-10 ml-0 lg:mt-0 lg:flex-1 lg:w-1/2 xl:w-1/3 lg:ml-10">
+            <div className="w-full mt-10 ml-0 lg:mt-0 lg:flex-1 lg:w-1/2 xl:w-1/3 ">
               <div className="p-10 text-white bg-black lg:h-full">
                 <div className="mt-2 text-sm uppercase">Trenzy Shirt</div>
                 <div className="mt-10 mb-5 text-2xl">About Us</div>
@@ -110,7 +110,7 @@ const AboutUsPage = () => {
                     variant="shadow"
                     color="secondary"
                     className="flex text-white hover:text-white"
-                    href="/"
+                    href="/mens-shirts"
                   >
                     <div className="flex-initial">Shop Now Here</div>
                     <ArrowRight />

@@ -5,8 +5,9 @@ import { TProduct } from "@/types";
 import Image from "next/image";
 
 const MensShirtsPage = async ({ searchParams }: { searchParams: any }) => {
+  // console.log(searchParams);
   const { result: allProducts } = await getAllProducts(searchParams);
-  // console.log(allProducts.length);
+  // console.log(allProducts);
 
   return (
     <div>
@@ -27,9 +28,7 @@ const MensShirtsPage = async ({ searchParams }: { searchParams: any }) => {
         </div>
       ) : (
         <div>
-          <h2 className="font-semibold text-xl bg-slate-100 p-3">
-            Mens's Shirts
-          </h2>
+          <h2 className="font-semibold text-xl ">Mens's Shirts</h2>
           <br />
           <p className="text-sm text-slate-800">
             {allProducts.length} items found in Mens's Shirts
@@ -41,7 +40,7 @@ const MensShirtsPage = async ({ searchParams }: { searchParams: any }) => {
        md:grid-cols-4 gap-3 justify-center place-items-center"
       >
         {allProducts?.map((item: TProduct) => (
-          <ProductCard key={item._id} {...item} />
+          <ProductCard key={item._id} product={item} />
         ))}
       </div>
     </div>
